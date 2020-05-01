@@ -1,0 +1,20 @@
+.box {
+  width: 270px;
+  // flex: 1;
+  margin: 10px;
+  padding: 4px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 6px #ddd;
+  text-align: center;
+  cursor: pointer;
+  transition: all .3s ease;
+
+  &:hover {
+    opacity: .9;
+    transform: rotate(1deg) scale(1.03);
+  }
+  .img {
+    width: 200px;
+    height: 340px;
+  }
+}

@@ -31,11 +31,11 @@ class App extends React.Component {
             <div className={styles.logo} />
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={window.location.hash.split('/')[1]}>
               <Menu.Item key="home"><Link to="/home">Home</Link></Menu.Item>
-              <Menu.Item key="movie"><Link to="/movie">Movie</Link></Menu.Item>
+              <Menu.Item key="movie"><Link to="/movie/in_theaters/1">Movie</Link></Menu.Item>
               <Menu.Item key="about"><Link to="/about">About</Link></Menu.Item>
             </Menu>
           </Header>
-          <Content className={styles.ant_layout_content}>
+          <Content style={{ backgroundColor: '#fff', flex: 1 }}>
             <Switch>
               <Route path="/home">
                 <HomeContainer></HomeContainer>

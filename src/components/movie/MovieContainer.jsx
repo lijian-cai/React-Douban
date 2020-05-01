@@ -1,4 +1,9 @@
 import React from 'react'
+import {Route, Link, Switch} from 'react-router-dom'
+
+import MovieList from './MovieList.jsx'
+import MovieDetail from './MovieDetail.jsx'
+
 
 import { Layout, Menu } from 'antd';
 
@@ -9,29 +14,33 @@ class MovieContainer extends React.Component {
   render() { 
     return ( 
       <Layout style={{ height: '100%' }}>
-        <Sider width={200} className="site-layout-background">
+        <Sider width={200} style={{ backgroundColor: '#fff' }}>
           <Menu
             mode="inline"
-            defaultSelectedKeys={['1']}
+            defaultSelectedKeys={window.location.hash.split('/')[2]}
             style={{ height: '100%', borderRight: 0 }}
           >
-            <Menu.Item key="1">Now Showing</Menu.Item>
-            <Menu.Item key="2">Coming Soon</Menu.Item>
-            <Menu.Item key="3">Top250</Menu.Item>
+            <Menu.Item key="in_theaters">
+              <Link to="/movie/in_theaters/1">Now Showing</Link>
+            </Menu.Item>
+            <Menu.Item key="coming_soon">
+              <Link to="/movie/coming_soon/1">Coming Soon</Link>
+            </Menu.Item>
+            <Menu.Item key="top250">
+              <Link to="/movie/top250/1">Top250</Link>
+            </Menu.Item>
           </Menu>
         </Sider>
-        <Layout style={{ paddingLeft: '1px' }}>
-          <Content
-            style={{
-              padding: 10,
-              margin: 0,
-              minHeight: 280,
-              backgroundColor: '#fff'
-            }}
-          >
-            Content
-          </Content>
-        </Layout>
+        <Content
+          style={{ backgroundColor: '#fff', flex: 1, borderLeft: '1px solid #f0f2f5', padding: 15 }}
+        >
+          <Switch>
+            <Route path="/movie/detail/:id" component={MovieDetail}>
+            </Route>
+            <Route path="/movie/:type/:page" component={MovieList}>
+            </Route>
+          </Switch>
+        </Content>
       </Layout>
     );
   }
